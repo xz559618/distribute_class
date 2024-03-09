@@ -38,7 +38,8 @@ public class server {
     //线程处理客户端
     private static void handelClient(Socket client) throws IOException, ClassNotFoundException {
         try(ObjectInputStream input = new ObjectInputStream(client.getInputStream());
-        ObjectOutputStream output = new ObjectOutputStream(client.getOutputStream())){
+        ObjectOutputStream output = new ObjectOutputStream(client.getOutputStream());
+        ){
             //客户端发来的信息
             Object request = input.readObject();
             // instanceof 判断对象的类型
@@ -47,15 +48,18 @@ public class server {
                 //处理充值请求
                 String card = chargeRequest.getCard();
                 float money = chargeRequest.getMoney();
+                System.out.println(card+"用户连接");
                 // TODO: 2024/3/7 写于文件
                 updateOrAppendCardInfo(card, money);
                 System.out.println(card+"用户充值"+money+"元");
                 output.writeObject(new Response(true,"充值成功"+money));
+                System.out.println(card+"用户断开");
             }else if(request instanceof payRequest){ //判断为支付请求
                 payRequest payRequest = (payRequest)request;
                 //处理支付请求
                 String card = payRequest.getCard();
                 float money = payRequest.getMoney();
+                System.out.println(card+"用户连接");
                 // TODO: 2024/3/7  读取文件并比较
                 readCardInfo("cardBalances.txt");
                 double balance = checkBalance(card);
@@ -67,8 +71,8 @@ public class server {
                     output.writeObject(new Response(false,"支付失败"));
                     System.out.println(card+"用户消费失败");
                 }
+                System.out.println(card+"用户断开");
             }
-
         }catch (Exception e){
             System.out.println("Error:"+e);
         }finally {

@@ -28,7 +28,7 @@ class chargeRequest extends Request{
     private static final long serialVersionUID = 1L;
     private String card;
     private float money;
-    chargeRequest(String card, int money){
+    chargeRequest(String card, float money){
         this.card = card;
         this.money = money;
     }
@@ -44,7 +44,7 @@ class payRequest extends Request {
     private static final long serialVersionUID = 1L;
     private String card;
     private float money;
-    payRequest(String card,int money){
+    payRequest(String card,float money){
         this.card = card;
         this.money = money;
     }
@@ -55,4 +55,3 @@ class payRequest extends Request {
         return money;
     }
 }
-
