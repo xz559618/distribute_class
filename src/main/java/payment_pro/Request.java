@@ -44,7 +44,7 @@ class payRequest extends Request {
     private static final long serialVersionUID = 1L;
     private String card;
     private float money;
-    private payRequest(String card,int money){
+    payRequest(String card,int money){
         this.card = card;
         this.money = money;
     }

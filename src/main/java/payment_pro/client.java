@@ -11,20 +11,20 @@ public class client {
             ObjectOutputStream output = new ObjectOutputStream(server.getOutputStream());
             ObjectInputStream input = new ObjectInputStream(server.getInputStream())){
             // TODO: 2024/3/7 通过交互接口判断发出请求
-                /* Test--
-                   发送充值请求
-                   if(flag.equals(charge))
-                chargeRequest chargeRequest = new chargeRequest("card123", 100);
+                 //Test--
+                   //发送充值请求
+                //if(flag.equals(charge))
+                chargeRequest chargeRequest = new chargeRequest("card123", 150);
                 output.writeObject(chargeRequest);
                 Response response = (Response) input.readObject();
                 System.out.println(response.getMessage());
-                   发送支付请求
-                   if(flag.equals(pay))
-                /*payRequest payRequest = new payRequest("card123", 50);
-                output.writeObject(payRequest);
-                response = (Response) ois.readObject();
-                System.out.println(response.getMessage());
-                */
+                  // 发送支付请求
+                //if(flag.equals(pay))
+//                payRequest payRequest = new payRequest("card123", 50);
+//                output.writeObject(payRequest);
+//                Response response = (Response) input.readObject();
+//                System.out.println(response.getMessage());
+
             } catch (UnknownHostException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
